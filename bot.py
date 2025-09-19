@@ -1,5 +1,5 @@
 import logging
-from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, Bot
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, Bot, WebAppInfo
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, CallbackContext
 
 # আপনার বট টোকেন এবং প্রাইভেট চ্যানেল আইডি এখানে দিন।
@@ -48,7 +48,7 @@ async def start(update: Update, context: CallbackContext) -> None:
 
     # যদি ব্যবহারকারী চ্যানেলের সদস্য হয়, তবে এই বার্তাটি এবং মেনু দেখাবে।
     keyboard = [
-        [InlineKeyboardButton("ওপেন হ্যাক", url=HACK_WEBSITE_URL)],
+        [InlineKeyboardButton("ওপেন হ্যাক", web_app=WebAppInfo(url=HACK_WEBSITE_URL))],
         [InlineKeyboardButton("Rules", callback_data="show_rules")],
         [InlineKeyboardButton("এডমিনের সাথে যোগাযোগ করুন", url=f"https://t.me/{ADMIN_USERNAME}")]
     ]
